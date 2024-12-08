@@ -1,0 +1,27 @@
+<div class="campaign-details">
+    <!-- Obrazek -->
+    <div class="campaign-image">
+      <img src="https://via.placeholder.com/800x400" alt="Campaign Image" />
+    </div>
+  
+    <!-- Szczegóły kampanii -->
+    <div class="details-card">
+      <h2>{{ campaign?.name }}</h2>
+      <p><strong>Status:</strong> {{ campaign?.status | uppercase }}</p>
+      <p><strong>Bid Amount:</strong> {{ campaign?.bidAmount }} $</p>
+      <p><strong>Campaign Fund:</strong> {{ campaign?.campaignFund }} $</p>
+      <p><strong>Town:</strong> {{ campaign?.town }}</p>
+      <p><strong>Radius:</strong> {{ campaign?.radius }} km</p>
+      <p *ngIf="campaign?.keywords?.length">
+        <strong>Keywords:</strong> {{ campaign?.keywords?.join(', ') }}
+      </p>
+    </div>
+  
+    <!-- Przyciski akcji -->
+    <div class="actions">
+      <button class="btn edit-btn" (click)="editCampaign()">Edit</button>
+      <button class="btn delete-btn" (click)="deleteCampaign()">Delete</button>
+      <button class="btn back-btn" (click)="goBack()">Back to Campaigns</button>
+    </div>
+  </div>
+  

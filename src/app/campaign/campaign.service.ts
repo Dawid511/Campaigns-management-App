@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Campaign } from '../../types/campaign.model';
+import { RouterModule } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -248,13 +249,14 @@ export class CampaignService {
     this.campaigns.push(campaign);
   }
 
-  // Edytuj istniejącą kampanię
   updateCampaign(id: number, updatedCampaign: Campaign): void {
     const index = this.campaigns.findIndex((campaign) => campaign.id === id);
     if (index !== -1) {
-      this.campaigns[index] = { ...updatedCampaign, id };
+      this.campaigns[index] = { ...updatedCampaign, id }; // Zachowaj ID
     }
   }
+  
+  
 
   // Usuń kampanię
   deleteCampaign(id: number): void {
