@@ -1,21 +1,20 @@
-@charset "UTF-8";
 .campaign-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamiczna siatka */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 16px;
   padding: 16px;
 }
+
 @media (min-width: 768px) {
   .campaign-list {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Większe elementy na tabletach */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   }
 }
 @media (min-width: 1024px) {
   .campaign-list {
-    grid-template-columns: repeat(3, 1fr); /* Max 3 elementy w rzędzie na dużych ekranach */
+    grid-template-columns: repeat(3, 1fr);
   }
 }
-
 .campaign-card {
   background: #777373;
   border-radius: 8px;
@@ -23,21 +22,25 @@
   padding: 16px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .campaign-card:hover {
   transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Lepszy efekt po najechaniu */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
 .campaign-card h3 {
   font-size: 20px;
   color: #ffffff;
   margin-bottom: 8px;
 }
+
 .campaign-card p {
   color: #eaeaea;
   font-size: 14px;
   margin-bottom: 8px;
 }
-.campaign-card .status {
+
+.status {
   font-weight: bold;
   color: #fff;
   border-radius: 6px;
@@ -46,11 +49,13 @@
   margin-top: 8px;
   border: 2px solid transparent;
 }
-.campaign-card .status.status-on {
+
+.status-on {
   border-color: #28a745;
   background-color: rgba(40, 167, 69, 0.2);
 }
-.campaign-card .status.status-off {
+
+.status-off {
   border-color: #dc3545;
   background-color: rgba(220, 53, 69, 0.2);
 }
@@ -62,6 +67,7 @@
   gap: 10px;
   margin-top: 20px;
 }
+
 .pagination button {
   padding: 8px 16px;
   font-size: 14px;
@@ -71,14 +77,17 @@
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease;
 }
+
 .pagination button:hover:not(:disabled) {
   background-color: #f0f0f0;
-  transform: scale(1.1); /* Powiększenie po najechaniu */
+  transform: scale(1.1);
 }
+
 .pagination button:disabled {
   background-color: #e0e0e0;
   cursor: not-allowed;
 }
+
 .pagination span {
   font-size: 14px;
   font-weight: bold;

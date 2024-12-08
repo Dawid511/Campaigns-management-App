@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { CampaignService } from '../campaign/campaign.service';
 import { Campaign } from '../../types/campaign.model';
-import { CommonModule } from '@angular/common'; // Do obsługi dyrektyw Angular
+import { CommonModule } from '@angular/common';
 import { CampaignComponent } from '../campaign/campaign.component';
 import { FilterService } from '../filter.service';
-import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
   styleUrls: ['./campaign-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, CampaignComponent, RouterLink], // Zaimportowanie CampaignComponent
+  imports: [CommonModule, CampaignComponent],
 })
 export class CampaignListComponent implements OnInit {
-  campaigns: Campaign[] = []; // Wszystkie kampanie
-  filteredCampaigns: Campaign[] = []; // Filtrowane kampanie
-  paginatedCampaigns: Campaign[] = []; // Kampanie na bieżącej stronie
-  currentPage: number = 1; // Aktualna strona
-  itemsPerPage: number = 15; // Liczba elementów na stronie
+  campaigns: Campaign[] = [];
+  filteredCampaigns: Campaign[] = [];
+  paginatedCampaigns: Campaign[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 15;
 
   constructor(
     private campaignService: CampaignService,
@@ -26,28 +26,27 @@ export class CampaignListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.campaigns = this.campaignService.getCampaigns(); // Pobierz wszystkie kampanie
-    this.filteredCampaigns = this.campaigns; // Domyślnie wyświetlaj wszystkie kampanie
+    this.campaigns = this.campaignService.getCampaigns();
+    this.filteredCampaigns = this.campaigns; 
     this.updatePagination();
 
-    // Nasłuchuj zmiany wyszukiwania
     this.filterService.search$.subscribe((searchTerm) => {
       this.filteredCampaigns = this.campaigns.filter((campaign) =>
         campaign.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      this.currentPage = 1; // Resetuj stronę
+      this.currentPage = 1;
       this.updatePagination();
     });
   }
 
-  // Aktualizacja paginacji
+  // update pagination
   updatePagination(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
     this.paginatedCampaigns = this.filteredCampaigns.slice(startIndex, endIndex);
   }
 
-  // Przejście do następnej strony
+  // previous page
   nextPage(): void {
     if (this.currentPage < Math.ceil(this.filteredCampaigns.length / this.itemsPerPage)) {
       this.currentPage++;
@@ -55,7 +54,7 @@ export class CampaignListComponent implements OnInit {
     }
   }
 
-  // Przejście do poprzedniej strony
+  // next page
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;

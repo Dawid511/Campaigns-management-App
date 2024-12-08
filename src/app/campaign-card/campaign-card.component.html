@@ -1,10 +1,10 @@
 <div class="campaign-details">
-    <!-- Obrazek -->
+    <!-- image example-->
     <div class="campaign-image">
       <img src="https://via.placeholder.com/800x400" alt="Campaign Image" />
     </div>
   
-    <!-- Szczegóły kampanii -->
+    <!-- informations aboutcampaign -->
     <div class="details-card">
       <h2>{{ campaign?.name }}</h2>
       <p><strong>Status:</strong> {{ campaign?.status | uppercase }}</p>
@@ -17,7 +17,7 @@
       </p>
     </div>
   
-    <!-- Przyciski akcji -->
+    <!-- buttons -->
     <div class="actions">
       <button class="btn edit-btn" (click)="editCampaign()">Edit</button>
       <button class="btn delete-btn" (click)="deleteCampaign()">Delete</button>

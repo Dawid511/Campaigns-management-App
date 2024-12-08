@@ -1,25 +1,15 @@
-<div class="campaign-list" >
-    <app-campaign
-      *ngFor="let campaign of paginatedCampaigns"
-      [campaign]="campaign"
-    ></app-campaign>
-    
+<div class="campaign-list">
+    <app-campaign *ngFor="let campaign of paginatedCampaigns" [campaign]="campaign"></app-campaign>
   </div>
   
   <div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }}</span>
     <button
-  (click)="previousPage()"
-  [disabled]="currentPage === 1"
->
-  Previous
-</button>
-<span>Page {{ currentPage }}</span>
-<button
-  (click)="nextPage()"
-  [disabled]="currentPage * itemsPerPage >= campaigns.length"
->
-  Next
-</button>
-
+      (click)="nextPage()"
+      [disabled]="currentPage * itemsPerPage >= campaigns.length"
+    >
+      Next
+    </button>
   </div>
   

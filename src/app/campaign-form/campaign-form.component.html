@@ -1,7 +1,8 @@
 <div class="campaign-form-container">
     <h2>{{ isEditMode ? 'Edit Campaign' : 'Add New Campaign' }}</h2>
     <form [formGroup]="campaignForm" (ngSubmit)="submitCampaign()">
-      <!-- Pola formularza -->
+
+      <!-- Form fields -->
       <div class="form-group">
         <label for="name">Campaign Name:</label>
         <input id="name" formControlName="name" type="text" />
@@ -34,7 +35,7 @@
         <input id="radius" formControlName="radius" type="number" />
       </div>
   
-      <!-- Przycisk przesyłania -->
+      <!-- Update button-->
       <div class="form-actions">
         <button type="submit" [disabled]="campaignForm.invalid">
           {{ isEditMode ? 'Update Campaign' : 'Add Campaign' }}

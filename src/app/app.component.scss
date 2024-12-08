@@ -9,44 +9,44 @@ $text-color: #000000;
   
   .main-content {
     display: flex;
-    flex-wrap: wrap; /* Zapewnia responsywność */
-    gap: 24px; /* Odstęp między elementami */
+    flex-wrap: wrap;
+    gap: 24px;
   
     .sidebar {
-      flex: 1 1 250px; /* Boczne menu zajmuje minimalnie 250px */
-      max-width: 300px; /* Większa maksymalna szerokość menu */
+      flex: 1 1 250px;
+      max-width: 300px;
       background-color: #f8f9fa;
     }
   
     .content {
-      flex: 3 1 0; /* Główna treść zajmuje resztę miejsca */
+      flex: 3 1 0;
     }
   
     @media (max-width: 1024px) {
-      flex-direction: column; /* Sidebar i treść jeden pod drugim na mniejszych ekranach */
+      flex-direction: column;
     }
   }
   
 
   .content {
-    width: 100%; /* Szerokość dynamiczna */
-    max-width: 1400px; /* Większa maksymalna szerokość pola */
-    margin: 0 auto; /* Wyśrodkowanie pola */
-    padding: 24px; /* Odstępy wewnętrzne */
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px;
     box-sizing: border-box;
   
     @media (max-width: 1024px) {
-      max-width: 90%; /* Na średnich ekranach pole zajmuje 90% szerokości */
+      max-width: 90%;
       padding: 16px;
     }
   
     @media (max-width: 768px) {
-      max-width: 95%; /* Na tabletach pole zajmuje 95% szerokości */
+      max-width: 95%;
       padding: 12px;
     }
   
     @media (max-width: 576px) {
-      max-width: 100%; /* Na telefonach pole zajmuje pełną szerokość */
+      max-width: 100%;
       padding: 8px;
     }
   }

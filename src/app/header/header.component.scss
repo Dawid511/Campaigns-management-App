@@ -1,6 +1,5 @@
 @import '../styles/mixins.style.scss';
 
-/* Nagłówek */
 .header {
   display: flex;
   justify-content: space-between;
@@ -8,15 +7,14 @@
   padding: 15px 20px;
   background-color: #f8f9fa;
   border-bottom: 2px solid #eaeaea;
-  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  flex-wrap: wrap;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Lewa sekcja z logo i zakładkami */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 30px; /* Większy odstęp między logo a nawigacją */
+  gap: 30px;
 }
 
 .logo {
@@ -27,16 +25,16 @@
   cursor: pointer;
   transition: color 0.3s ease;
 
-  @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla logo */
+  @include hover-wave(#007bff, 2px, 0.3s);
 
   &:hover {
-    color: #0056b3; /* Zmiana koloru przy najechaniu */
+    color: #0056b3;
   }
 }
 
 .nav-links {
   display: flex;
-  gap: 20px; /* Odstęp między linkami */
+  gap: 20px;
 
   a {
     font-size: 16px;
@@ -46,7 +44,7 @@
     padding: 5px 10px;
     border-radius: 4px;
 
-    @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla linków */
+    @include hover-wave(#007bff, 2px, 0.3s);
 
     &:hover {
       background-color: #007bff;
@@ -60,7 +58,6 @@
   }
 }
 
-/* Wyszukiwarka */
 .search-form {
   display: flex;
   align-items: center;
@@ -90,7 +87,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 
-    @include hover-wave(#0056b3, 2px, 0.3s); /* Mixin dla przycisku */
+    @include hover-wave(#0056b3, 2px, 0.3s);
 
     &:hover {
       background-color: #0056b3;
@@ -98,7 +95,6 @@
   }
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -108,15 +104,15 @@
   .header-left {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    gap: 10px;
     width: 100%;
   }
 
   .nav-links {
-    flex-direction: row; /* Linki obok siebie */
+    flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 15px; /* Mniejszy odstęp między linkami */
+    gap: 15px;
   }
 
   .search-form {
@@ -127,12 +123,11 @@
   }
 
   .search-form .input {
-    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+    width: 100%;
   }
 }
 @import '../styles/mixins.style.scss';
 
-/* Nagłówek */
 .header {
   display: flex;
   justify-content: space-between;
@@ -140,15 +135,14 @@
   padding: 15px 20px;
   background-color: #f8f9fa;
   border-bottom: 2px solid #eaeaea;
-  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  flex-wrap: wrap;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Lewa sekcja z logo i zakładkami */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 30px; /* Większy odstęp między logo a nawigacją */
+  gap: 30px;
 }
 
 .logo {
@@ -159,16 +153,16 @@
   cursor: pointer;
   transition: color 0.3s ease;
 
-  @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla logo */
+  @include hover-wave(#007bff, 2px, 0.3s);
 
   &:hover {
-    color: #0056b3; /* Zmiana koloru przy najechaniu */
+    color: #0056b3;
   }
 }
 
 .nav-links {
   display: flex;
-  gap: 20px; /* Odstęp między linkami */
+  gap: 20px;
 
   a {
     font-size: 16px;
@@ -178,7 +172,7 @@
     padding: 5px 10px;
     border-radius: 4px;
 
-    @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla linków */
+    @include hover-wave(#007bff, 2px, 0.3s);
 
     &:hover {
       background-color: #007bff;
@@ -192,7 +186,6 @@
   }
 }
 
-/* Wyszukiwarka */
 .search-form {
   display: flex;
   align-items: center;
@@ -222,7 +215,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 
-    @include hover-wave(#0056b3, 2px, 0.3s); /* Mixin dla przycisku */
+    @include hover-wave(#0056b3, 2px, 0.3s);
 
     &:hover {
       background-color: #0056b3;
@@ -230,7 +223,6 @@
   }
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -240,15 +232,15 @@
   .header-left {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    gap: 10px;
     width: 100%;
   }
 
   .nav-links {
-    flex-direction: row; /* Linki obok siebie */
+    flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 15px; /* Mniejszy odstęp między linkami */
+    gap: 15px;
   }
 
   .search-form {
@@ -259,6 +251,6 @@
   }
 
   .search-form .input {
-    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+    width: 100%;
   }
 }

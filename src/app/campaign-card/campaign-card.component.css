@@ -1,12 +1,11 @@
-@charset "UTF-8";
 .campaign-details {
   max-width: 900px;
-  margin: 40px auto; /* Zmniejszenie marginesu od góry */
+  margin: 40px auto;
   padding: 20px;
   text-align: center;
   border-radius: 8px;
   background: #fff;
-  border: 2px solid #007bff; /* Niebieska obwódka */
+  border: 2px solid #007bff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 

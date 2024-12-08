@@ -17,12 +17,12 @@ import { Router } from '@angular/router';
 })
 export class CampaignFormComponent implements OnInit {
   campaignForm: FormGroup;
-  towns: string[] = ['Warsaw', 'Krakow', 'Gdansk', 'Wroclaw', 'Poznan']; // Lista miast
-  allKeywords: string[] = ['sale', 'discount', 'promo', 'summer', 'winter', 'festival', 'gifts', 'holiday']; // Słowa kluczowe
-  filteredKeywords: string[] = []; // Podpowiedzi typu typeahead
-  selectedKeywords: string[] = []; // Wybrane słowa kluczowe
-  isEditMode = false; // Określa, czy jest tryb edycji
-  editingCampaignId: number | null = null; // Przechowuje ID edytowanej kampanii
+  towns: string[] = ['Warsaw', 'Krakow', 'Gdansk', 'Wroclaw', 'Poznan'];
+  allKeywords: string[] = ['sale', 'discount', 'promo', 'summer', 'winter', 'festival', 'gifts', 'holiday'];
+  filteredKeywords: string[] = [];
+  selectedKeywords: string[] = []; 
+  isEditMode = false; 
+  editingCampaignId: number | null = null; 
 
 
   constructor(private fb: FormBuilder, private router: Router, private campaignService: CampaignService) {
@@ -38,16 +38,14 @@ export class CampaignFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Pobierz kampanię z przekazanych danych
     const state = history.state;
     if (state && state.campaign) {
       this.isEditMode = true;
       this.editingCampaignId = state.campaign.id;
   
-      // Wypełnij formularz danymi kampanii
       this.campaignForm.patchValue({
         name: state.campaign.name,
-        keywords: state.campaign.keywords.join(', '), // Jeśli keywords to tablica, przekształć na ciąg
+        keywords: state.campaign.keywords.join(', '),
         bidAmount: state.campaign.bidAmount,
         campaignFund: state.campaign.campaignFund,
         status: state.campaign.status,
@@ -55,15 +53,15 @@ export class CampaignFormComponent implements OnInit {
         radius: state.campaign.radius,
       });
   
-      // Wypełnij wybrane słowa kluczowe
+      
       this.selectedKeywords = state.campaign.keywords;
     }
   
-    this.syncKeywordsWithValidation(); // Synchronizuj walidację
+    this.syncKeywordsWithValidation(); // validation
   }
   
 
-  // Obsługa podpowiedzi dla słów kluczowych
+  // kewyords
   onKeywordInput(): void {
     const input = this.campaignForm.get('keywords')?.value.toLowerCase() || '';
     if (input) {
@@ -75,7 +73,7 @@ export class CampaignFormComponent implements OnInit {
     }
   }
 
-  // Dodanie słowa kluczowego
+  // 
   addKeyword(keyword: string): void {
     if (!this.selectedKeywords.includes(keyword)) {
       this.selectedKeywords.push(keyword);
@@ -85,13 +83,13 @@ export class CampaignFormComponent implements OnInit {
     }
   }
 
-  // Usunięcie słowa kluczowego
+  // 
   removeKeyword(keyword: string): void {
     this.selectedKeywords = this.selectedKeywords.filter((k) => k !== keyword);
     this.syncKeywordsWithValidation();
   }
 
-  // Synchronizacja walidacji
+  // Synch validation
   private syncKeywordsWithValidation(): void {
     if (this.selectedKeywords.length > 0) {
       this.campaignForm.get('keywords')?.setErrors(null);
@@ -105,7 +103,7 @@ export class CampaignFormComponent implements OnInit {
   submitCampaign(): void {
     if (this.campaignForm.valid) {
       const campaignData: Campaign = {
-        id: this.editingCampaignId || 0, // Jeśli edytujemy, użyj istniejącego ID
+        id: this.editingCampaignId || 0, // chose id to make new or edit
         name: this.campaignForm.get('name')?.value,
         keywords: this.selectedKeywords,
         bidAmount: this.campaignForm.get('bidAmount')?.value,
@@ -116,21 +114,22 @@ export class CampaignFormComponent implements OnInit {
       };
   
       if (this.isEditMode && this.editingCampaignId !== null) {
-        // Tryb edycji - aktualizuj kampanię
+        // edit mode
         this.campaignService.updateCampaign(this.editingCampaignId, campaignData);
         alert('Campaign updated successfully!');
       } else {
-        // Tryb dodawania - dodaj nową kampanię
+        // add new moew
         this.campaignService.addCampaign(campaignData);
         alert('New campaign added successfully!');
       }
   
-      // Resetuj formularz i przekieruj na listę kampanii
+      // reset form 
       this.campaignForm.reset();
       this.selectedKeywords = [];
       this.isEditMode = false;
       this.editingCampaignId = null;
 
+      // move to home (optional this or reset)
       this.router.navigate([`${campaignData.id}`]);
     }
   }

@@ -5,79 +5,56 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-    position: relative; /* Dodaj position: relative dla rodzica */
-  }
-  
-  .form-group {
+    position: relative;
+}
+
+.form-group {
     margin-bottom: 15px;
-    position: relative; /* Aby lista podpowiedzi była względem tego kontenera */
-  }
-  
-  label {
+    position: relative;
+}
+
+label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
-  }
-  
-  input, select {
+}
+
+input, select {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-  }
-  
-  .typeahead-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background: #fff;
-    position: absolute; /* Lista podpowiedzi nie wpływa na layout */
-    top: 100%; /* Wyświetlaj pod polem input */
-    left: 0;
-    width: 100%; /* Dopasowanie szerokości do input */
-    z-index: 10; /* Zapewnienie widoczności nad innymi elementami */
-    max-height: 150px;
-    overflow-y: auto;
-  }
-  
-  .typeahead-list li {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .typeahead-list li:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .selected-keywords {
+}
+
+.form-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 10px;
-  }
-  
-  .keyword {
-    background: #007bff;
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .keyword button {
-    background: transparent;
-    border: none;
-    color: #fff;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
     font-size: 16px;
-    margin-left: 5px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .error {
-    color: red;
-    font-size: 12px;
-  }
-  
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:focus {
+    outline: 2px solid #0056b3;
+    outline-offset: 2px;
+}

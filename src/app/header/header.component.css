@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* Nagłówek */
 .header {
   display: flex;
   justify-content: space-between;
@@ -7,15 +6,14 @@
   padding: 15px 20px;
   background-color: #f8f9fa;
   border-bottom: 2px solid #eaeaea;
-  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  flex-wrap: wrap;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Lewa sekcja z logo i zakładkami */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 30px; /* Większy odstęp między logo a nawigacją */
+  gap: 30px;
 }
 
 .logo {
@@ -29,7 +27,6 @@
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
-  /* Mixin dla logo */
 }
 .logo::after {
   content: "";
@@ -51,12 +48,12 @@
   transform-origin: left; /* Animacja idzie w lewo */
 }
 .logo:hover {
-  color: #0056b3; /* Zmiana koloru przy najechaniu */
+  color: #0056b3;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px; /* Odstęp między linkami */
+  gap: 20px;
 }
 .nav-links a {
   font-size: 16px;
@@ -69,7 +66,6 @@
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
-  /* Mixin dla linków */
 }
 .nav-links a::after {
   content: "";
@@ -99,7 +95,6 @@
   color: white;
 }
 
-/* Wyszukiwarka */
 .search-form {
   display: flex;
   align-items: center;
@@ -130,7 +125,6 @@
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
-  /* Mixin dla przycisku */
 }
 .search-form .primary::after {
   content: "";
@@ -155,7 +149,6 @@
   background-color: #0056b3;
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -164,14 +157,14 @@
   .header-left {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    gap: 10px;
     width: 100%;
   }
   .nav-links {
-    flex-direction: row; /* Linki obok siebie */
+    flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 15px; /* Mniejszy odstęp między linkami */
+    gap: 15px;
   }
   .search-form {
     width: 100%;
@@ -180,10 +173,9 @@
     gap: 10px;
   }
   .search-form .input {
-    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+    width: 100%;
   }
 }
-/* Nagłówek */
 .header {
   display: flex;
   justify-content: space-between;
@@ -191,15 +183,14 @@
   padding: 15px 20px;
   background-color: #f8f9fa;
   border-bottom: 2px solid #eaeaea;
-  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  flex-wrap: wrap;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Lewa sekcja z logo i zakładkami */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 30px; /* Większy odstęp między logo a nawigacją */
+  gap: 30px;
 }
 
 .logo {
@@ -213,7 +204,6 @@
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
-  /* Mixin dla logo */
 }
 .logo::after {
   content: "";
@@ -235,12 +225,12 @@
   transform-origin: left; /* Animacja idzie w lewo */
 }
 .logo:hover {
-  color: #0056b3; /* Zmiana koloru przy najechaniu */
+  color: #0056b3;
 }
 
 .nav-links {
   display: flex;
-  gap: 20px; /* Odstęp między linkami */
+  gap: 20px;
 }
 .nav-links a {
   font-size: 16px;
@@ -253,7 +243,6 @@
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
-  /* Mixin dla linków */
 }
 .nav-links a::after {
   content: "";
@@ -283,7 +272,6 @@
   color: white;
 }
 
-/* Wyszukiwarka */
 .search-form {
   display: flex;
   align-items: center;
@@ -314,7 +302,6 @@
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
-  /* Mixin dla przycisku */
 }
 .search-form .primary::after {
   content: "";
@@ -339,7 +326,6 @@
   background-color: #0056b3;
 }
 
-/* Responsywność */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -348,14 +334,14 @@
   .header-left {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    gap: 10px;
     width: 100%;
   }
   .nav-links {
-    flex-direction: row; /* Linki obok siebie */
+    flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 15px; /* Mniejszy odstęp między linkami */
+    gap: 15px;
   }
   .search-form {
     width: 100%;
@@ -364,6 +350,6 @@
     gap: 10px;
   }
   .search-form .input {
-    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+    width: 100%;
   }
 }/*# sourceMappingURL=header.component.css.map */
