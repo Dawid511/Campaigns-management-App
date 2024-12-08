@@ -1,4 +1,11 @@
-<div class="campaign-card" [routerLink]="['/', campaign.id]">
+<div
+  class="campaign-card"
+  [routerLink]="['/', campaign.id]"
+  [ngClass]="{
+    'status-on': campaign.status === 'on',
+    'status-off': campaign.status === 'off'
+  }"
+>
   <div class="card-header">
     <h3 class="campaign-title">{{ campaign.name }}</h3>
     <img
@@ -8,8 +15,15 @@
     />
   </div>
   <div class="card-content">
-    <p><strong>Bid Amount:</strong> {{ campaign.bidAmount }}$</p>
-    <p><strong>Campaign Fund:</strong> {{ campaign.campaignFund }}$</p>
+    <!-- Ikona radius
+      -->
+    <i class="radius-icon fa fa-map-marker-alt"></i>
+    <p>
+      <strong>Bid Amount:</strong> {{ campaign.bidAmount }}$
+    </p>
+    <p>
+      <strong>Campaign Fund:</strong> {{ campaign.campaignFund }}$
+    </p>
     <p>
       <strong>Status:</strong>
       <span
@@ -22,7 +36,8 @@
         {{ campaign.status }}
       </span>
     </p>
-    <p><strong>Radius:</strong> {{ campaign.radius }} km</p>
-    <p><strong>Town:</strong> {{ campaign.town }}</p>
+    <p>
+      <strong>Town:</strong> {{ campaign.town }}
+    </p>
   </div>
 </div>

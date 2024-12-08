@@ -4,20 +4,21 @@ import { Campaign } from '../../types/campaign.model';
 import { CommonModule } from '@angular/common'; // Do obsługi dyrektyw Angular
 import { CampaignComponent } from '../campaign/campaign.component';
 import { FilterService } from '../filter.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
   styleUrls: ['./campaign-list.component.scss'],
   standalone: true,
-  imports: [CommonModule, CampaignComponent], // Zaimportowanie CampaignComponent
+  imports: [CommonModule, CampaignComponent, RouterLink], // Zaimportowanie CampaignComponent
 })
 export class CampaignListComponent implements OnInit {
   campaigns: Campaign[] = []; // Wszystkie kampanie
   filteredCampaigns: Campaign[] = []; // Filtrowane kampanie
   paginatedCampaigns: Campaign[] = []; // Kampanie na bieżącej stronie
   currentPage: number = 1; // Aktualna strona
-  itemsPerPage: number = 20; // Liczba elementów na stronie
+  itemsPerPage: number = 15; // Liczba elementów na stronie
 
   constructor(
     private campaignService: CampaignService,

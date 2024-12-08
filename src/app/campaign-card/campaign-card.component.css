@@ -1,16 +1,19 @@
+@charset "UTF-8";
 .campaign-details {
   max-width: 900px;
-  margin: 80px auto;
+  margin: 40px auto; /* Zmniejszenie marginesu od góry */
   padding: 20px;
   text-align: center;
   border-radius: 8px;
   background: #fff;
+  border: 2px solid #007bff; /* Niebieska obwódka */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-.campaign-details .campaign-image {
+
+.campaign-image {
   margin-bottom: 20px;
 }
-.campaign-details .campaign-image img {
+.campaign-image img {
   width: 100%;
   max-height: 400px;
   -o-object-fit: cover;
@@ -18,7 +21,8 @@
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-.campaign-details .details-card {
+
+.details-card {
   font-size: 16px;
   line-height: 1.8;
   color: #555;
@@ -29,24 +33,25 @@
   background: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.campaign-details .details-card h2 {
+.details-card h2 {
   margin-bottom: 16px;
   font-size: 28px;
   font-weight: bold;
   color: #333;
   text-align: center;
 }
-.campaign-details .details-card p {
+.details-card p {
   margin: 12px 0;
 }
-.campaign-details .details-card p strong {
+.details-card p strong {
   font-weight: bold;
   color: #000;
 }
-.campaign-details .actions {
+
+.actions {
   margin-top: 20px;
 }
-.campaign-details .actions .btn {
+.actions .btn {
   padding: 10px 20px;
   font-size: 16px;
   border: none;
@@ -54,24 +59,24 @@
   cursor: pointer;
   margin: 0 10px;
 }
-.campaign-details .actions .btn.edit-btn {
+.actions .btn.edit-btn {
   background-color: #007bff;
   color: #fff;
 }
-.campaign-details .actions .btn.edit-btn:hover {
+.actions .btn.edit-btn:hover {
   background-color: #0056b3;
 }
-.campaign-details .actions .btn.delete-btn {
+.actions .btn.delete-btn {
   background-color: #dc3545;
   color: #fff;
 }
-.campaign-details .actions .btn.delete-btn:hover {
+.actions .btn.delete-btn:hover {
   background-color: #c82333;
 }
-.campaign-details .actions .btn.back-btn {
+.actions .btn.back-btn {
   background-color: #6c757d;
   color: #fff;
 }
-.campaign-details .actions .btn.back-btn:hover {
+.actions .btn.back-btn:hover {
   background-color: #5a6268;
 }/*# sourceMappingURL=campaign-card.component.css.map */
