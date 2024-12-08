@@ -1,11 +1,17 @@
 <div class="app-container">
   <app-header></app-header> <!-- Nagłówek aplikacji -->
   <div class="main-content">
-    <nav class="sidebar">
-      <app-navbar></app-navbar> <!-- Nawigacja boczna -->
-    </nav>
+   
+     <!-- Sidebar -->
+      <!-- <aside class="sidebar" [class.hidden]="!isSidebarOpen && !isDesktop">
+        <app-sidebar></app-sidebar>
+      </aside> -->
+      
     <main class="content">
       <router-outlet></router-outlet> <!-- Dynamiczne ładowanie treści -->
     </main>
   </div>
 </div>
+
+
+

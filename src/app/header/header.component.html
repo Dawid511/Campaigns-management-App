@@ -2,12 +2,17 @@
     <div class="header-left">
       <h1 routerLink="/" class="logo">Campaign Management System</h1>
       <nav class="nav-links">
-        <a routerLink="/new" routerLinkActive="active-link">Start New Campaign</a>
+        <a routerLink="/new" routerLinkActive="active-link">Add Campaign</a>
+        <a routerLink="/about" routerLinkActive="active-link">About</a>
       </nav>
     </div>
     <form class="search-form">
-      <input class="input" type="text" placeholder="Find campaign">
-      <button class="primary" type="button">Search</button>
+      <input
+        class="input"
+        type="text"
+        placeholder="Search campaigns..."
+        (input)="onSearchChange($event)"
+      />
     </form>
   </section>
   

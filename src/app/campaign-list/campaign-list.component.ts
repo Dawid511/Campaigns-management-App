@@ -3,6 +3,7 @@ import { CampaignService } from '../campaign/campaign.service';
 import { Campaign } from '../../types/campaign.model';
 import { CommonModule } from '@angular/common'; // Do obsługi dyrektyw Angular
 import { CampaignComponent } from '../campaign/campaign.component';
+import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'app-campaign-list',
@@ -12,31 +13,52 @@ import { CampaignComponent } from '../campaign/campaign.component';
   imports: [CommonModule, CampaignComponent], // Zaimportowanie CampaignComponent
 })
 export class CampaignListComponent implements OnInit {
-  campaigns: Campaign[] = [];
-  currentPage: number = 1;
-  itemsPerPage: number = 20;
+  campaigns: Campaign[] = []; // Wszystkie kampanie
+  filteredCampaigns: Campaign[] = []; // Filtrowane kampanie
+  paginatedCampaigns: Campaign[] = []; // Kampanie na bieżącej stronie
+  currentPage: number = 1; // Aktualna strona
+  itemsPerPage: number = 20; // Liczba elementów na stronie
 
-  constructor(private campaignService: CampaignService) {}
+  constructor(
+    private campaignService: CampaignService,
+    private filterService: FilterService
+  ) {}
 
   ngOnInit(): void {
-    this.campaigns = this.campaignService.getCampaigns();
+    this.campaigns = this.campaignService.getCampaigns(); // Pobierz wszystkie kampanie
+    this.filteredCampaigns = this.campaigns; // Domyślnie wyświetlaj wszystkie kampanie
+    this.updatePagination();
+
+    // Nasłuchuj zmiany wyszukiwania
+    this.filterService.search$.subscribe((searchTerm) => {
+      this.filteredCampaigns = this.campaigns.filter((campaign) =>
+        campaign.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      this.currentPage = 1; // Resetuj stronę
+      this.updatePagination();
+    });
   }
 
-  get paginatedCampaigns(): Campaign[] {
+  // Aktualizacja paginacji
+  updatePagination(): void {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    return this.campaigns.slice(startIndex, endIndex);
+    this.paginatedCampaigns = this.filteredCampaigns.slice(startIndex, endIndex);
   }
 
+  // Przejście do następnej strony
   nextPage(): void {
-    if (this.currentPage * this.itemsPerPage < this.campaigns.length) {
+    if (this.currentPage < Math.ceil(this.filteredCampaigns.length / this.itemsPerPage)) {
       this.currentPage++;
+      this.updatePagination();
     }
   }
 
+  // Przejście do poprzedniej strony
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;
+      this.updatePagination();
     }
   }
 }

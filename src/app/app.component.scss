@@ -1,7 +1,5 @@
 $primary-color: #71afec;
-$text-color: #000000;
-
-
+$text-color: #000000;  
   
 :host {
     display: flex;
@@ -10,18 +8,48 @@ $text-color: #000000;
   }
   
   .main-content {
-    display: flex; /* Układ poziomy: sidebar + content */
-    flex: 1; /* Wypełnia resztę strony */
-  }
+    display: flex;
+    flex-wrap: wrap; /* Zapewnia responsywność */
+    gap: 24px; /* Odstęp między elementami */
   
-  .content {
-    flex: 1;
-    padding: 16px;
-    background-color: $primary-color;
-    overflow: auto;
+    .sidebar {
+      flex: 1 1 250px; /* Boczne menu zajmuje minimalnie 250px */
+      max-width: 300px; /* Większa maksymalna szerokość menu */
+      background-color: #f8f9fa;
+    }
   
-    @media (max-width: 768px) {
-      padding: 8px; /* Zmniejsz padding na małych ekranach */
+    .content {
+      flex: 3 1 0; /* Główna treść zajmuje resztę miejsca */
+    }
+  
+    @media (max-width: 1024px) {
+      flex-direction: column; /* Sidebar i treść jeden pod drugim na mniejszych ekranach */
     }
   }
+  
+
+  .content {
+    width: 100%; /* Szerokość dynamiczna */
+    max-width: 1400px; /* Większa maksymalna szerokość pola */
+    margin: 0 auto; /* Wyśrodkowanie pola */
+    padding: 24px; /* Odstępy wewnętrzne */
+    box-sizing: border-box;
+  
+    @media (max-width: 1024px) {
+      max-width: 90%; /* Na średnich ekranach pole zajmuje 90% szerokości */
+      padding: 16px;
+    }
+  
+    @media (max-width: 768px) {
+      max-width: 95%; /* Na tabletach pole zajmuje 95% szerokości */
+      padding: 12px;
+    }
+  
+    @media (max-width: 576px) {
+      max-width: 100%; /* Na telefonach pole zajmuje pełną szerokość */
+      padding: 8px;
+    }
+  }
+  
+  
   

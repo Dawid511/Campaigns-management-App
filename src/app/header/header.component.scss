@@ -1,68 +1,264 @@
 @import '../styles/mixins.style.scss';
 
-/* Podstawowe style */
+/* Nagłówek */
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f9fa;
-    flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #eaeaea;
+  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Lewa sekcja z logo i zakładkami */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Większy odstęp między logo a nawigacją */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla logo */
+
+  &:hover {
+    color: #0056b3; /* Zmiana koloru przy najechaniu */
   }
-  
-  /* Styl dla lewej sekcji z logo i linkiem */
-  .header-left {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Odstęp między logo a nawigacją */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px; /* Odstęp między linkami */
+
+  a {
+    font-size: 16px;
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla linków */
+
+    &:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    &.active-link {
+      background-color: #007bff;
+      color: white;
+    }
   }
-  
-  .logo {
-    @include hover-wave(#25282b, 2px, 0.3s);
-  }
-  
-  .nav-links a {
-    @include hover-wave(#25282b, 2px, 0.3s);
-  }
-  
-  /* Styl dla wyszukiwarki */
-  .search-form {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .search-form .input {
-    padding: 5px;
+}
+
+/* Wyszukiwarka */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .input {
+    width: 250px;
+    padding: 8px 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
   }
-  
-  .search-form .primary {
+
+  .primary {
     background-color: #007bff;
     color: white;
     border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    @include hover-wave(#0056b3, 2px, 0.3s); /* Mixin dla przycisku */
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: row; /* Linki obok siebie */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px; /* Mniejszy odstęp między linkami */
+  }
+
+  .search-form {
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-form .input {
+    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+  }
+}
+@import '../styles/mixins.style.scss';
+
+/* Nagłówek */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #eaeaea;
+  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Lewa sekcja z logo i zakładkami */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Większy odstęp między logo a nawigacją */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+  @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla logo */
+
+  &:hover {
+    color: #0056b3; /* Zmiana koloru przy najechaniu */
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px; /* Odstęp między linkami */
+
+  a {
+    font-size: 16px;
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 500;
     padding: 5px 10px;
     border-radius: 4px;
+
+    @include hover-wave(#007bff, 2px, 0.3s); /* Mixin dla linków */
+
+    &:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    &.active-link {
+      background-color: #007bff;
+      color: white;
+    }
+  }
+}
+
+/* Wyszukiwarka */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .input {
+    width: 250px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+
+  .primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
     cursor: pointer;
-  }
-  
-  /* Responsywność */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .header-left {
-      justify-content: space-between;
-      width: 100%;
-    }
-  
-    .search-form {
-      width: 100%;
-      justify-content: flex-start;
-      margin-top: 10px;
+    transition: background-color 0.3s ease;
+
+    @include hover-wave(#0056b3, 2px, 0.3s); /* Mixin dla przycisku */
+
+    &:hover {
+      background-color: #0056b3;
     }
   }
-  
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: row; /* Linki obok siebie */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px; /* Mniejszy odstęp między linkami */
+  }
+
+  .search-form {
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-form .input {
+    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+  }
+}

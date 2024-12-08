@@ -1,8 +1,19 @@
+@charset "UTF-8";
 .campaign-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Dynamiczna siatka */
   gap: 16px;
   padding: 16px;
+}
+@media (min-width: 768px) {
+  .campaign-list {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Większe elementy na tabletach */
+  }
+}
+@media (min-width: 1024px) {
+  .campaign-list {
+    grid-template-columns: repeat(3, 1fr); /* Max 3 elementy w rzędzie na dużych ekranach */
+  }
 }
 
 .campaign-card {
@@ -10,10 +21,38 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .campaign-card:hover {
   transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Lepszy efekt po najechaniu */
+}
+.campaign-card h3 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.campaign-card p {
+  color: #eaeaea;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.campaign-card .status {
+  font-weight: bold;
+  color: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  display: inline-block;
+  margin-top: 8px;
+  border: 2px solid transparent;
+}
+.campaign-card .status.status-on {
+  border-color: #28a745;
+  background-color: rgba(40, 167, 69, 0.2);
+}
+.campaign-card .status.status-off {
+  border-color: #dc3545;
+  background-color: rgba(220, 53, 69, 0.2);
 }
 
 .pagination {
@@ -21,21 +60,27 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 16px;
+  margin-top: 20px;
 }
-.pagination .pagination-button {
+.pagination button {
   padding: 8px 16px;
-  background: #007bff;
-  color: white;
-  border: none;
+  font-size: 14px;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: #fff;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
-.pagination .pagination-button:disabled {
-  background: #ccc;
+.pagination button:hover:not(:disabled) {
+  background-color: #f0f0f0;
+  transform: scale(1.1); /* Powiększenie po najechaniu */
+}
+.pagination button:disabled {
+  background-color: #e0e0e0;
   cursor: not-allowed;
 }
-.pagination .pagination-button:hover:not(:disabled) {
-  background: #0056b3;
+.pagination span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #444;
 }/*# sourceMappingURL=campaign-list.component.css.map */

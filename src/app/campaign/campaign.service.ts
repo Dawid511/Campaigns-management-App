@@ -272,4 +272,10 @@ export class CampaignService {
       ? Math.max(...this.campaigns.map((campaign) => campaign.id)) + 1
       : 1;
   }
+
+  // Pobierz unikalne kategorie (keywords)
+  getCategories(): string[] {
+    const allKeywords = this.campaigns.flatMap(campaign => campaign.keywords);
+    return Array.from(new Set(allKeywords)); // Usuń duplikaty
+  }
 }

@@ -1,13 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { FilterService } from '../filter.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [RouterLink],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive]
 })
 export class HeaderComponent {
+  constructor(private filterService: FilterService) {}
 
+  // Obsługa dynamicznego wyszukiwania
+  onSearchChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.filterService.setSearchTerm(input.value); // Przekaż frazę do serwisu na bieżąco
+  }
 }

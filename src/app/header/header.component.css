@@ -1,26 +1,35 @@
 @charset "UTF-8";
-/* Podstawowe style */
+/* Nagłówek */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background-color: #f8f9fa;
+  border-bottom: 2px solid #eaeaea;
   flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Styl dla lewej sekcji z logo i linkiem */
+/* Lewa sekcja z logo i zakładkami */
 .header-left {
   display: flex;
   align-items: center;
-  gap: 20px; /* Odstęp między logo a nawigacją */
+  gap: 30px; /* Większy odstęp między logo a nawigacją */
 }
 
 .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
   position: relative; /* Aby pseudoelement był względem elementu */
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
+  /* Mixin dla logo */
 }
 .logo::after {
   content: "";
@@ -29,24 +38,38 @@
   left: 0;
   width: 100%; /* Szerokość linii */
   height: 2px; /* Wysokość linii */
-  background: #25282b; /* Kolor linii */
+  background: #007bff; /* Kolor linii */
   transform: scaleX(0); /* Ukryj linię */
   transform-origin: right; /* Animacja zaczyna się od prawej strony */
   transition: transform 0.3s ease;
 }
 .logo:hover {
-  color: #25282b; /* Zmiana koloru tekstu podczas hover */
+  color: #007bff; /* Zmiana koloru tekstu podczas hover */
 }
 .logo:hover::after {
   transform: scaleX(1); /* Rozszerzenie linii na całej długości */
   transform-origin: left; /* Animacja idzie w lewo */
 }
+.logo:hover {
+  color: #0056b3; /* Zmiana koloru przy najechaniu */
+}
 
+.nav-links {
+  display: flex;
+  gap: 20px; /* Odstęp między linkami */
+}
 .nav-links a {
+  font-size: 16px;
+  color: #343a40;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
   position: relative; /* Aby pseudoelement był względem elementu */
   text-decoration: none;
   color: inherit; /* Zachowaj domyślny kolor */
   transition: color 0.3s ease;
+  /* Mixin dla linków */
 }
 .nav-links a::after {
   content: "";
@@ -55,39 +78,81 @@
   left: 0;
   width: 100%; /* Szerokość linii */
   height: 2px; /* Wysokość linii */
-  background: #25282b; /* Kolor linii */
+  background: #007bff; /* Kolor linii */
   transform: scaleX(0); /* Ukryj linię */
   transform-origin: right; /* Animacja zaczyna się od prawej strony */
   transition: transform 0.3s ease;
 }
 .nav-links a:hover {
-  color: #25282b; /* Zmiana koloru tekstu podczas hover */
+  color: #007bff; /* Zmiana koloru tekstu podczas hover */
 }
 .nav-links a:hover::after {
   transform: scaleX(1); /* Rozszerzenie linii na całej długości */
   transform-origin: left; /* Animacja idzie w lewo */
 }
+.nav-links a:hover {
+  background-color: #007bff;
+  color: white;
+}
+.nav-links a.active-link {
+  background-color: #007bff;
+  color: white;
+}
 
-/* Styl dla wyszukiwarki */
+/* Wyszukiwarka */
 .search-form {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .search-form .input {
-  padding: 5px;
+  width: 250px;
+  padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
 }
-
+.search-form .input:focus {
+  border-color: #007bff;
+  outline: none;
+}
 .search-form .primary {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 16px;
   border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative; /* Aby pseudoelement był względem elementu */
+  text-decoration: none;
+  color: inherit; /* Zachowaj domyślny kolor */
+  transition: color 0.3s ease;
+  /* Mixin dla przycisku */
+}
+.search-form .primary::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Umieszczamy linię na dole elementu */
+  left: 0;
+  width: 100%; /* Szerokość linii */
+  height: 2px; /* Wysokość linii */
+  background: #0056b3; /* Kolor linii */
+  transform: scaleX(0); /* Ukryj linię */
+  transform-origin: right; /* Animacja zaczyna się od prawej strony */
+  transition: transform 0.3s ease;
+}
+.search-form .primary:hover {
+  color: #0056b3; /* Zmiana koloru tekstu podczas hover */
+}
+.search-form .primary:hover::after {
+  transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+  transform-origin: left; /* Animacja idzie w lewo */
+}
+.search-form .primary:hover {
+  background-color: #0056b3;
 }
 
 /* Responsywność */
@@ -97,12 +162,208 @@
     align-items: flex-start;
   }
   .header-left {
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
     width: 100%;
+  }
+  .nav-links {
+    flex-direction: row; /* Linki obok siebie */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px; /* Mniejszy odstęp między linkami */
   }
   .search-form {
     width: 100%;
-    justify-content: flex-start;
     margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .search-form .input {
+    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
+  }
+}
+/* Nagłówek */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #eaeaea;
+  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Lewa sekcja z logo i zakładkami */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Większy odstęp między logo a nawigacją */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #343a40;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative; /* Aby pseudoelement był względem elementu */
+  text-decoration: none;
+  color: inherit; /* Zachowaj domyślny kolor */
+  transition: color 0.3s ease;
+  /* Mixin dla logo */
+}
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Umieszczamy linię na dole elementu */
+  left: 0;
+  width: 100%; /* Szerokość linii */
+  height: 2px; /* Wysokość linii */
+  background: #007bff; /* Kolor linii */
+  transform: scaleX(0); /* Ukryj linię */
+  transform-origin: right; /* Animacja zaczyna się od prawej strony */
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  color: #007bff; /* Zmiana koloru tekstu podczas hover */
+}
+.logo:hover::after {
+  transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+  transform-origin: left; /* Animacja idzie w lewo */
+}
+.logo:hover {
+  color: #0056b3; /* Zmiana koloru przy najechaniu */
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px; /* Odstęp między linkami */
+}
+.nav-links a {
+  font-size: 16px;
+  color: #343a40;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  position: relative; /* Aby pseudoelement był względem elementu */
+  text-decoration: none;
+  color: inherit; /* Zachowaj domyślny kolor */
+  transition: color 0.3s ease;
+  /* Mixin dla linków */
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Umieszczamy linię na dole elementu */
+  left: 0;
+  width: 100%; /* Szerokość linii */
+  height: 2px; /* Wysokość linii */
+  background: #007bff; /* Kolor linii */
+  transform: scaleX(0); /* Ukryj linię */
+  transform-origin: right; /* Animacja zaczyna się od prawej strony */
+  transition: transform 0.3s ease;
+}
+.nav-links a:hover {
+  color: #007bff; /* Zmiana koloru tekstu podczas hover */
+}
+.nav-links a:hover::after {
+  transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+  transform-origin: left; /* Animacja idzie w lewo */
+}
+.nav-links a:hover {
+  background-color: #007bff;
+  color: white;
+}
+.nav-links a.active-link {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Wyszukiwarka */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-form .input {
+  width: 250px;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+.search-form .input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+.search-form .primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative; /* Aby pseudoelement był względem elementu */
+  text-decoration: none;
+  color: inherit; /* Zachowaj domyślny kolor */
+  transition: color 0.3s ease;
+  /* Mixin dla przycisku */
+}
+.search-form .primary::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Umieszczamy linię na dole elementu */
+  left: 0;
+  width: 100%; /* Szerokość linii */
+  height: 2px; /* Wysokość linii */
+  background: #0056b3; /* Kolor linii */
+  transform: scaleX(0); /* Ukryj linię */
+  transform-origin: right; /* Animacja zaczyna się od prawej strony */
+  transition: transform 0.3s ease;
+}
+.search-form .primary:hover {
+  color: #0056b3; /* Zmiana koloru tekstu podczas hover */
+}
+.search-form .primary:hover::after {
+  transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+  transform-origin: left; /* Animacja idzie w lewo */
+}
+.search-form .primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; /* Mniejszy odstęp na mniejszych ekranach */
+    width: 100%;
+  }
+  .nav-links {
+    flex-direction: row; /* Linki obok siebie */
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 15px; /* Mniejszy odstęp między linkami */
+  }
+  .search-form {
+    width: 100%;
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .search-form .input {
+    width: 100%; /* Input zajmuje całą szerokość na małych ekranach */
   }
 }/*# sourceMappingURL=header.component.css.map */
