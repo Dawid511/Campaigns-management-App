@@ -1,0 +1,30 @@
+
+@mixin hover-wave($color: #000, $height: 2px, $duration: 0.3s) {
+    position: relative; /* Aby pseudoelement był względem elementu */
+    text-decoration: none;
+    color: inherit; /* Zachowaj domyślny kolor */
+    transition: color $duration ease;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0; /* Umieszczamy linię na dole elementu */
+      left: 0;
+      width: 100%; /* Szerokość linii */
+      height: $height; /* Wysokość linii */
+      background: $color; /* Kolor linii */
+      transform: scaleX(0); /* Ukryj linię */
+      transform-origin: right; /* Animacja zaczyna się od prawej strony */
+      transition: transform $duration ease;
+    }
+  
+    &:hover {
+      color: $color; /* Zmiana koloru tekstu podczas hover */
+    }
+  
+    &:hover::after {
+      transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+      transform-origin: left; /* Animacja idzie w lewo */
+    }
+}
+  

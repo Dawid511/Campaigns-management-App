@@ -1,0 +1,27 @@
+<div class="campaign-card">
+    <div class="card-header">
+      <!-- <img
+        [src]="'https://via.placeholder.com/150'" 
+        alt="Campaign Image"
+        class="campaign-image"
+      /> -->
+      <h3 class="campaign-title">{{ campaign.name }}</h3>
+    </div>
+    <div class="card-content">
+      <p><strong>Bid Amount:</strong> {{ campaign.bidAmount }}$</p>
+      <p><strong>Campaign Fund:</strong> {{ campaign.campaignFund }}$</p>
+      <p>
+        <strong>Status:</strong>
+        <span
+          class="status"
+          [ngClass]="{
+            'status-on': campaign.status === 'on',
+            'status-off': campaign.status === 'off'
+          }"
+          >{{ campaign.status }}</span
+        >
+      </p>
+      <p><strong>Radius:</strong> {{ campaign.radius }} km</p>
+    </div>
+  </div>
+  

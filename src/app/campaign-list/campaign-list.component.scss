@@ -1,0 +1,46 @@
+.campaign-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .campaign-card {
+    background: #777373;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    transition: transform 0.2s ease;
+  
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+  
+    .pagination-button {
+      padding: 8px 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+  
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+  
+      &:hover:not(:disabled) {
+        background: #0056b3;
+      }
+    }
+  }
+  

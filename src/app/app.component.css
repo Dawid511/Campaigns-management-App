@@ -1,0 +1,23 @@
+@charset "UTF-8";
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-content {
+  display: flex; /* Układ poziomy: sidebar + content */
+  flex: 1; /* Wypełnia resztę strony */
+}
+
+.content {
+  flex: 1;
+  padding: 16px;
+  background-color: #71afec;
+  overflow: auto;
+}
+@media (max-width: 768px) {
+  .content {
+    padding: 8px; /* Zmniejsz padding na małych ekranach */
+  }
+}/*# sourceMappingURL=app.component.css.map */

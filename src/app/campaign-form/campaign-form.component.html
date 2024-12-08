@@ -1,0 +1,95 @@
+<div class="campaign-form-container">
+    <h2>Add New Campaign</h2>
+    <form [formGroup]="campaignForm" (ngSubmit)="addCampaign()">
+      <!-- Campaign Name -->
+      <div class="form-group">
+        <label for="name">Campaign Name:</label>
+        <input id="name" formControlName="name" type="text" placeholder="Enter campaign name" />
+        <div *ngIf="campaignForm.get('name')?.invalid && campaignForm.get('name')?.touched" class="error">
+          Name is required.
+        </div>
+      </div>
+  
+      <!-- Keywords with Typeahead -->
+    <div class="form-group">
+        <label for="keywords">Keywords (mandatory, pre-populated with typeahead):</label>
+        <input
+          id="keywords"
+          type="text"
+          formControlName="keywords"
+          placeholder="Type to search keywords"
+          (input)="onKeywordInput()"
+          autocomplete="off"
+        />
+        <ul *ngIf="filteredKeywords.length > 0" class="typeahead-list">
+          <li *ngFor="let keyword of filteredKeywords" (click)="addKeyword(keyword)">
+            {{ keyword }}
+          </li>
+        </ul>
+        <div class="selected-keywords">
+          <span *ngFor="let keyword of selectedKeywords" class="keyword">
+            {{ keyword }}
+            <button type="button" (click)="removeKeyword(keyword)">×</button>
+          </span>
+        </div>
+        <div *ngIf="campaignForm.get('keywords')?.invalid && campaignForm.get('keywords')?.touched" class="error">
+          Keywords are required.
+        </div>
+      </div>
+  
+      <!-- Bid Amount -->
+      <div class="form-group">
+        <label for="bidAmount">Bid Amount:</label>
+        <input id="bidAmount" formControlName="bidAmount" type="number" min="1" />
+        <div *ngIf="campaignForm.get('bidAmount')?.invalid && campaignForm.get('bidAmount')?.touched" class="error">
+          Bid amount must be at least 1.
+        </div>
+      </div>
+  
+      <!-- Campaign Fund -->
+      <div class="form-group">
+        <label for="campaignFund">Campaign Fund:</label>
+        <input id="campaignFund" formControlName="campaignFund" type="number" min="1" />
+        <div *ngIf="campaignForm.get('campaignFund')?.invalid && campaignForm.get('campaignFund')?.touched" class="error">
+          Campaign fund must be at least 1.
+        </div>
+      </div>
+  
+      <!-- Status -->
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <select id="status" formControlName="status">
+          <option value="on">On</option>
+          <option value="off">Off</option>
+        </select>
+      </div>
+  
+      <!-- Town Dropdown -->
+    <div class="form-group">
+        <label for="town">Select Town:</label>
+        <select id="town" formControlName="town">
+          <option *ngFor="let town of towns" [value]="town">{{ town }}</option>
+        </select>
+        <div *ngIf="campaignForm.get('town')?.invalid && campaignForm.get('town')?.touched" class="error">
+          Town is required.
+        </div>
+      </div>
+      
+  
+      <!-- Radius -->
+      <div class="form-group">
+        <label for="radius">Radius (in km):</label>
+        <input id="radius" formControlName="radius" type="number" min="1" />
+        <div *ngIf="campaignForm.get('radius')?.invalid && campaignForm.get('radius')?.touched" class="error">
+          Radius must be at least 1.
+        </div>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="form-actions">
+        <button type="submit" [disabled]="campaignForm.invalid">Add Campaign</button>
+        <button type="button" (click)="campaignForm.reset()">Reset</button>
+      </div>
+    </form>
+  </div>
+  

@@ -1,0 +1,108 @@
+@charset "UTF-8";
+/* Podstawowe style */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  flex-wrap: wrap; /* Umożliwia zawijanie na mniejszych ekranach */
+}
+
+/* Styl dla lewej sekcji z logo i linkiem */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Odstęp między logo a nawigacją */
+}
+
+.logo {
+  position: relative; /* Aby pseudoelement był względem elementu */
+  text-decoration: none;
+  color: inherit; /* Zachowaj domyślny kolor */
+  transition: color 0.3s ease;
+}
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Umieszczamy linię na dole elementu */
+  left: 0;
+  width: 100%; /* Szerokość linii */
+  height: 2px; /* Wysokość linii */
+  background: #25282b; /* Kolor linii */
+  transform: scaleX(0); /* Ukryj linię */
+  transform-origin: right; /* Animacja zaczyna się od prawej strony */
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  color: #25282b; /* Zmiana koloru tekstu podczas hover */
+}
+.logo:hover::after {
+  transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+  transform-origin: left; /* Animacja idzie w lewo */
+}
+
+.nav-links a {
+  position: relative; /* Aby pseudoelement był względem elementu */
+  text-decoration: none;
+  color: inherit; /* Zachowaj domyślny kolor */
+  transition: color 0.3s ease;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* Umieszczamy linię na dole elementu */
+  left: 0;
+  width: 100%; /* Szerokość linii */
+  height: 2px; /* Wysokość linii */
+  background: #25282b; /* Kolor linii */
+  transform: scaleX(0); /* Ukryj linię */
+  transform-origin: right; /* Animacja zaczyna się od prawej strony */
+  transition: transform 0.3s ease;
+}
+.nav-links a:hover {
+  color: #25282b; /* Zmiana koloru tekstu podczas hover */
+}
+.nav-links a:hover::after {
+  transform: scaleX(1); /* Rozszerzenie linii na całej długości */
+  transform-origin: left; /* Animacja idzie w lewo */
+}
+
+/* Styl dla wyszukiwarki */
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-form .input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.search-form .primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-left {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .search-form {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 10px;
+  }
+}/*# sourceMappingURL=header.component.css.map */

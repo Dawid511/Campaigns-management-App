@@ -1,0 +1,60 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+  
+    .navbar-left {
+      display: flex;
+      align-items: center;
+    }
+  
+    .filter-input {
+      padding: 5px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      outline: none;
+      font-size: 14px;
+    }
+  
+    .filter-input:focus {
+      border-color: #0056b3;
+    }
+  
+    .navbar-right {
+      display: flex;
+      align-items: center;
+  
+      button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+      }
+  
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px;
+        background-color: #0056b3;
+        border-radius: 4px;
+  
+        li {
+          margin: 5px 0;
+  
+          a {
+            color: white;
+            text-decoration: none;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+  

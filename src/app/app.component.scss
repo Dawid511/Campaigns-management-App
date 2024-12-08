@@ -1,0 +1,27 @@
+$primary-color: #71afec;
+$text-color: #000000;
+
+
+  
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .main-content {
+    display: flex; /* Układ poziomy: sidebar + content */
+    flex: 1; /* Wypełnia resztę strony */
+  }
+  
+  .content {
+    flex: 1;
+    padding: 16px;
+    background-color: $primary-color;
+    overflow: auto;
+  
+    @media (max-width: 768px) {
+      padding: 8px; /* Zmniejsz padding na małych ekranach */
+    }
+  }
+  
