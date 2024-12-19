@@ -4,19 +4,19 @@ Simple CRUD for camaings management web app made with Angular
 
 ## View of main page
 
-![image](pictures\main.png)
+![image](pictures/main.png)
 
 ## Additional info of campaign
 
-![image](pictures\additional_info.png)
+![image](pictures/additional_info.png)
 
 ## Adding new campaigns
 
-![image](pictures\create.png)
+![image](pictures/create.png)
 
 ## About 
 
-![image](pictures\about.png)
+![image](pictures/about.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.11.
 
